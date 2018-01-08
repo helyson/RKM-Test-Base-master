@@ -1,0 +1,169 @@
+@circle-width: 0.08em;
+@circle-width-hover: 0.04em;
+@big-cicle-size:240px;
+@medium-cicle-size:@big-cicle-size/2;
+@small-cicle-size:@big-cicle-size/3;
+@x-small-cicle-size:@big-cicle-size/4;
+.rect-auto {
+    clip: rect(auto, auto, auto, auto);
+}
+
+.pie {
+    width: 1 - (2 * @circle-width);
+    height: 1 - (2 * @circle-width);
+    position: absolute;
+    border: @circle-width solid @circle-bar-primary-color;
+    clip: rect(0em, 0.5em, 1em, 0em);
+    border-radius: 50%;
+    .rotate(0deg);
+}
+
+.pie-fill {
+    .rotate(180deg);
+}
+.acronym{
+            display: inline-block;
+            font-weight: normal;
+        }
+// main
+.c100 {
+
+    *, *:before, *:after {
+        .box-sizing(content-box);
+    }
+
+    position: relative;
+    font-size: 120px;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    float: left;
+    margin: 0 0.1em 0.1em 0;
+    background-color: @circle-bar-secondary-color;
+
+    // center circle to its parent
+    &.center{
+        float: none;
+        margin: 0 auto;
+    }
+
+    // bigger size
+    &.big{
+        font-size: @big-cicle-size;
+        span.acronym{
+              font-size:@big-cicle-size*0.15 !important;
+        }
+    }
+    // medium size
+    &.medium{
+        font-size: @medium-cicle-size;
+       span.acronym{
+              font-size:@medium-cicle-size*0.15 !important;
+        }
+    }
+
+    // smaller size
+    &.small{
+        font-size: @small-cicle-size;
+        span.acronym{
+              font-size:@small-cicle-size*0.15 !important;
+        }
+    }
+   // x smaller size
+    &.x-small{
+        font-size: @x-small-cicle-size;
+        span.acronym{
+              font-size:@x-small-cicle-size*0.15 !important;
+        }
+    }
+    // centered value inside circle
+    > span.title-bar {
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 5em;
+        line-height: 5em;
+        font-size: 0.2em;
+        color: @primary-color;
+        font-weight: bold;
+        display: inline-block;
+        text-align: center;
+        white-space: nowrap;
+        word-spacing: -0.25em;
+    }
+  
+&:after{
+        position: absolute;
+        top: @circle-width;
+        left: @circle-width;
+        display: block;
+        content: " ";
+        border-radius: 50%;
+        background-color: @circle-bar-bg-color;
+        width: 1 - (2 * @circle-width);
+        height: 1 - (2 * @circle-width);
+    }
+
+       // the slice (mask)
+    .slice {
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        clip: rect(0em, 1em, 1em, 0.5em);
+    }
+
+    // circle to show the status
+    .bar {
+        &:extend(.pie);
+    }
+
+    // loop to create all needed elements automatically
+    .generate-elements(@n, @i: 1) when (@i =< @n) {
+        &.p@{i} {
+            & .slice {
+                &:extend(.rect-auto);
+            }
+            & .bar:after{
+                &:extend(.pie-fill);
+            }
+            & .fill{
+                &:extend(.pie);
+                &:extend(.pie-fill);
+            }
+        }
+
+        .generate-elements(@n, (@i + 1));
+    }
+    // loop to rotate all 100 circles
+    .generate-rotation(@n, @i: 1) when (@i =< @n) {
+        &.p@{i} .bar {
+            @degs: (360/100*@i);
+            .rotate(~"@{degs}deg");
+        }
+
+        .generate-rotation(@n, (@i + 1));
+    }
+
+    .generate-elements(100, 51);
+    .generate-rotation(100, 1);
+     //  Skins default skin primary color
+    &.danger{
+
+        .bar, .fill { border-color: @danger-color !important;}
+    }
+    &.warning{
+
+        .bar, .fill { border-color: @warning-color !important;}
+    }
+    &.success{
+
+        .bar, .fill { border-color: @success-color !important;}
+    }
+    &.info{
+
+        .bar, .fill { border-color: @info-color !important;}
+    }
+
+}

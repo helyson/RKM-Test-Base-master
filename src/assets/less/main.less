@@ -1,0 +1,225 @@
+// AngularJS specific styles (like ng-cloak)
+@import "angular-styles";
+@import "colors";
+@import "fonts";
+@import "mixins";
+@import "icons";
+@import "circle";
+@base-url:"http://localhost:8080";
+@base-url-img:"@{base-url}/src/assets/images/";
+
+body{
+	background-color: @body-color;
+    font-size: @font-size-base
+}
+
+.btn{
+    font-weight:bold; 
+    font-size: @font-size-medium;
+}
+
+.row{
+    .separate-top-bottom;
+    margin: 0px;
+}
+
+.options{
+	 font-weight:bold; 
+    .options-left{
+        float:left;
+        span{
+           .font-highlight;
+        } 
+    }
+    .options-right
+    {
+        padding-right: 0px;
+        float:right;
+        div{
+            padding-right: 0px;
+        }
+    }
+}
+.side-info{
+    div{
+        .margin-padding
+    }
+}
+.no-side-info{
+    div{
+         .margin-padding(5px;5px);
+    }
+}
+.btn-reporting{
+    padding: 0px;
+    .button-propierties(@theme-color-secondary,70px,30px);
+}
+.my-btn-secondary{
+   .button-propierties(@theme-color-secondary,100%,100%);
+}
+.my-btn-primary{
+    color:@font-color-white;
+   .button-propierties(@btn-color-primary,100%,100%);
+}
+.my-container{
+    margin-right:3%;
+    margin-left: 3%;
+   .separate-top-bottom;
+}
+
+.line-bottom-normal{
+   .line-bottom(darken(@body-color,5%));
+}
+
+.line-top-normal{
+   .line-top(darken(@body-color,5%));
+}
+.line-bottom-bold{
+    .line-bottom(darken(@body-color,10%));
+}
+.separate-top-bottom{
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+.square-legend{ 
+    display: inline-block;
+    .box(10px,10px, inherent)
+}
+
+.my-list-group {
+    a{
+        .font-normal;
+        background-color: transparent;
+        border: none;
+        &:hover, &:focus{
+            span{
+                color:@font-color-highlight;
+            }
+        }
+    }
+}
+.legend {
+    .div{
+        .separate-top-bottom;
+        font-weight: bold;
+    }
+    .legend-title{
+        .font-legend-title;
+    }
+    .legend-content{
+        .separate-top-bottom;
+        .item-legend{
+            display: block;
+            .bg-success,.bg-danger,.bg-warning,.bg-info, .bg-primary{
+            .square-legend;
+        }
+        p{
+            .font-legend-scale;
+            }
+        }
+    }
+}
+
+.info-profile{
+    img{
+        .box(100px,100px);
+    }
+    span{
+        font-size: @font-size-big;
+        color:@font-color-highlight;
+        font-weight: bold;
+        display: block;
+    }
+}
+.progress-bar{
+    width: 100%;
+    .bar-bg-color(100);
+}
+
+.bar-bg-color(@n) when (@n =< 50) {
+   .bg-danger;
+}
+
+.bar-bg-color(@n) when (@n > 50) and (@n =< 60){
+   .bg-warning;
+}
+
+.bar-bg-color(@n) when (@n > 60) and (@n =< 76)  {
+   .bg-success;
+}
+
+.bar-bg-color(@n) when (@n > 76) and (@n =< 90)  {
+   .bg-info;
+}
+
+.bar-bg-color(@n) when (@n > 90) {
+   .bg-primary;
+}
+
+.panel{
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left:5px;
+    margin-right: 5px;  
+    .panel-title{
+        .font-bold;
+        padding: 10px;
+    }
+}
+
+.left-50{
+    left:50%
+}
+
+.subtitle(@size:@font-size-base){
+    display: block;
+    .font-bold(@legend-color-scale,@size);
+    margin-bottom: 10px;
+    .subtitle-bot{
+          display: inherit;
+        .font-bold(@font-color-normal,@size+1);
+    }
+}
+
+.subtitle-top{
+    .subtitle;
+}
+
+.subtitle-top-medium{
+   .subtitle(@font-size-base+1);
+}
+
+.title-progress{
+    .font-title-gray;
+    .progress{
+        margin-bottom: 0px;
+        height: 10px;
+    }
+    .title-inline-primary{
+        .title-inline(@primary-color,@font-size-base+1)
+    }
+}
+
+.title-inline(@color:@font-color-normal,@size:@font-size-base){
+    .font-bold(@color,@size) !important;
+    .title-inline-right{
+        font-weight: normal !important;
+    }
+}
+
+
+.card{
+    .line-bottom-normal;
+    .card-header{
+        margin-bottom: 0px;
+        .progress{
+             margin-bottom: 0px;
+        }
+    }
+    span.label-item{
+        .font-bold(@collapse-label-color,@font-size-base+1) 
+    }
+    span.title-inline-normal{
+        .title-inline(@font-color-normal,@font-size-base+1)
+    }
+}

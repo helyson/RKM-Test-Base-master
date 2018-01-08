@@ -1,0 +1,31 @@
+@font-size-base:10px;
+@font-size-highlight:@font-size-base + 2px;
+@font-size-big:@font-size-base + 8px;
+@font-size-medium:@font-size-base - 2px;
+@font-legend-title:@font-size-base - 3px;
+@font-legend-scale:@font-size-base - 4px;
+
+.font-highlight{
+	.font-propierties(@font-color-highlight, @font-size-highlight)
+}
+
+.font-normal{
+	.font-propierties;
+}
+
+.font-legend-scale{
+	.font-propierties(@legend-color-scale,@font-legend-scale)
+}
+
+.font-legend-title{
+	.font-propierties(@legend-color-title,@font-legend-title);
+}
+
+.font-bold(@color:@font-color-normal,@size:@font-size-base){
+	font-weight: bold;
+	.font-propierties(@color,@size);
+}
+
+.font-title-gray{
+	.font-propierties(@legend-color-title,@font-size-base);
+}

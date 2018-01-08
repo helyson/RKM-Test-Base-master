@@ -1,0 +1,19 @@
+
+span.arrow-left-icon {
+    background-image: url("@{base-url-img}arrow-left.svg");
+		.icons-propierties;
+}
+span.save-icon {
+    background-image: url("@{base-url-img}save-icon.svg");
+   	.icons-propierties(10px,8px);
+}
+span.arrowhead-down-icon {
+    background-image: url("@{base-url-img}arrowhead-down.svg");
+   	.icons-propierties(10px,10px);
+}
+.icons-propierties(@width:25px;@height:25px){
+ background-repeat:no-repeat;
+    background-size: contain;
+    display: inline-block;
+    .box(@width,@height);
+}
