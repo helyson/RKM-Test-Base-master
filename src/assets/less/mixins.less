@@ -35,10 +35,7 @@
     box-sizing: @box-sizing;
 }
 
-.font-propierties(@color:@font-color-normal,@size:@font-size-base){
-	color:@color;
-    font-size: @size;
-}
+
 .page-wrap {
   display: -webkit-box;           
   display: -moz-box;              
@@ -54,4 +51,14 @@
     top: 50%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
+}
+.rounded-corners(@size: 5px) {
+  border-radius: @size;
+  -moz-border-radius: @size;
+  -webkit-border-radius: @size;
+}
+.caret-size(@size:2px;@color:black) {
+    border-left: @size solid transparent;
+    border-right: @size solid transparent;
+    border-top: @size solid @color;
 }

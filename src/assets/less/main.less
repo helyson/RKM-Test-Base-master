@@ -5,12 +5,13 @@
 @import "mixins";
 @import "icons";
 @import "circle";
+@import "navbar";
 @base-url:"http://localhost:8080";
 @base-url-img:"@{base-url}/src/assets/images/";
 
 body{
 	background-color: @body-color;
-    font-size: @font-size-base
+    font-size: @font-size-base;
 }
 
 .btn{
@@ -28,7 +29,7 @@ body{
     .options-left{
         float:left;
         span{
-           .font-highlight;
+           .font-propierties(@font-color-highlight,@font-size-base);
         } 
     }
     .options-right
@@ -40,15 +41,27 @@ body{
         }
     }
 }
-.side-info{
+.without-spaces{
     div{
         .margin-padding
     }
 }
-.no-side-info{
+.define-spaces{
     div{
          .margin-padding(5px;5px);
     }
+}
+.without-padding-right{
+   padding-right:0px; 
+   margin-right:0px; 
+}
+.without-padding-left{
+   padding-left:0px; 
+    padding-left:0px; 
+}
+.without-padding-sides{
+    .without-padding-right;
+    .without-padding-left;
 }
 .btn-reporting{
     padding: 0px;
@@ -87,13 +100,20 @@ body{
 }
 
 .my-list-group {
+    margin-top: 20px;
     a{
-        .font-normal;
+        .font-propierties(@font-color-highlight,@font-size-base);
         background-color: transparent;
+        padding-top:5px;
+        padding-bottom: 5px; 
         border: none;
+        >span{
+        color:@theme-color-secondary;
+        }
         &:hover, &:focus{
+            background-color: darken(@body-color,5%);
             span{
-                color:@font-color-highlight;
+                .font-bold(lighten(@primary-color,5%));
             }
         }
     }
@@ -125,9 +145,8 @@ body{
         .box(100px,100px);
     }
     span{
-        font-size: @font-size-big;
-        color:@font-color-highlight;
-        font-weight: bold;
+        padding-left: 15px;
+        .font-bold(@font-color-highlight,@font-size-big);
         display: block;
     }
 }
@@ -159,8 +178,8 @@ body{
 .panel{
     padding-left: 0px;
     padding-right: 0px;
-    margin-left:5px;
-    margin-right: 5px;  
+    margin-left:20px;
+    margin-right: 0px;  
     .panel-title{
         .font-bold;
         padding: 10px;
@@ -171,13 +190,13 @@ body{
     left:50%
 }
 
-.subtitle(@size:@font-size-base){
+.subtitle(@size:@font-size-base,@size-bottom:@font-size-base+2){
     display: block;
-    .font-bold(@legend-color-scale,@size);
+    .font-bold(@font-color-title,@size);
     margin-bottom: 10px;
     .subtitle-bot{
           display: inherit;
-        .font-bold(@font-color-normal,@size+1);
+        .font-bold(darken(@font-color-title,20%),@size-bottom);
     }
 }
 
@@ -186,27 +205,33 @@ body{
 }
 
 .subtitle-top-medium{
-   .subtitle(@font-size-base+1);
+   .subtitle(@font-size-base+1,@font-size-base+6);
 }
 
 .title-progress{
-    .font-title-gray;
     .progress{
         margin-bottom: 0px;
         height: 10px;
     }
-    .title-inline-primary{
-        .title-inline(@primary-color,@font-size-base+1)
+    .title-inline-secondary{
+        .title-inline(@font-color-highlight,@font-size-base+1)
     }
 }
 
+.title-progress-bold{
+    .font-bold(@font-color-title);
+    .title-progress;
+}
+.title-progress-normal{
+    .font-propierties(@legend-color-title);
+    .title-progress;
+}
 .title-inline(@color:@font-color-normal,@size:@font-size-base){
     .font-bold(@color,@size) !important;
     .title-inline-right{
         font-weight: normal !important;
     }
 }
-
 
 .card{
     .line-bottom-normal;
@@ -217,9 +242,9 @@ body{
         }
     }
     span.label-item{
-        .font-bold(@collapse-label-color,@font-size-base+1) 
+        .font-bold(@collapse-label-color,@font-size-base) 
     }
     span.title-inline-normal{
-        .title-inline(@font-color-normal,@font-size-base+1)
+        .title-inline(@font-color-highlight,@font-size-base)
     }
 }

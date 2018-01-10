@@ -1,0 +1,90 @@
+.navbar{
+	.rounded-corners(0px);
+	.without-padding-sides;
+	margin-bottom: 0px;
+	div, span{
+		.page-wrap;
+		margin-top: auto;
+    margin-bottom: auto;
+	}
+	.collapse{
+		width: 100%;
+	}
+.nav-information{
+		display: inline-block ;
+		img{
+		  .box(30px,30px);
+				display: inline-block !important;
+		}
+		span{
+				display: inherit;
+				color: @nav-color-item;
+		}
+	}
+	.dropdown-toggle{
+		 &:hover, &:focus{
+            background-color: lighten(@theme-color,5%) !important;
+        }
+	}
+	.caret-big {
+   .caret-size(6px,@nav-color-item);
+	}	
+	.navbar-right{
+		padding-top: 10px;
+	}
+	.navbar-left{
+		font-weight: bold;
+		li{	
+			a{
+				display: inline-block;
+				span{
+					display:inherit;
+					&.nav-briefcase{
+						.briefcase-icon;
+						opacity: 0.5;
+						}
+					&.nav-graphic{
+						.graphic-icon;
+						opacity: 0.5;
+						}
+					&.nav-key{
+						.key-icon;
+						opacity: 0.5;
+						}
+					&.nav-chart{
+						.chart-icon;
+						opacity: 0.5;
+						}
+					&.nav-flash{
+						.flash-icon;
+						opacity: 0.5;
+						}
+					}
+					&:hover, &:focus{
+						background-color: lighten(@theme-color,5%) !important;
+						color:@nav-color-item;
+						span.nav-briefcase{
+							.briefcase-icon;
+							opacity: 1;
+						}
+						span.nav-graphic{
+							.graphic-icon;
+							opacity: 1;
+						}
+						span.nav-key{
+							.key-icon;
+							opacity: 1;
+						}
+						span.nav-chart{
+							.chart-icon;
+							opacity: 1;
+						}
+						span.nav-flash{
+							.flash-icon;
+							opacity: 1;
+						}
+					}
+				}
+			}
+		}
+}

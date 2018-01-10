@@ -1,4 +1,5 @@
-@font-size-base:10px;
+
+@font-size-base:12px;
 @font-size-highlight:@font-size-base + 2px;
 @font-size-big:@font-size-base + 8px;
 @font-size-medium:@font-size-base - 2px;
@@ -26,6 +27,7 @@
 	.font-propierties(@color,@size);
 }
 
-.font-title-gray{
-	.font-propierties(@legend-color-title,@font-size-base);
+.font-propierties(@color:@font-color-normal,@size:@font-size-base){
+	color:@color;
+    font-size: @size;
 }

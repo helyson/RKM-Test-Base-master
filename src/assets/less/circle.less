@@ -1,9 +1,11 @@
 @circle-width: 0.08em;
 @circle-width-hover: 0.04em;
-@big-cicle-size:240px;
-@medium-cicle-size:@big-cicle-size/2;
-@small-cicle-size:@big-cicle-size/3;
-@x-small-cicle-size:@big-cicle-size/4;
+@xx-large-cicle-size:380px;
+@larger-cicle-size:@xx-large-cicle-size/2;
+@medium-cicle-size:@xx-large-cicle-size/3;
+@small-cicle-size:@xx-large-cicle-size/4;
+@x-small-cicle-size:@xx-large-cicle-size/5;
+@xx-small-cicle-size:@xx-large-cicle-size/6;
 .rect-auto {
     clip: rect(auto, auto, auto, auto);
 }
@@ -48,10 +50,10 @@
     }
 
     // bigger size
-    &.big{
-        font-size: @big-cicle-size;
+    &.large{
+        font-size: @larger-cicle-size;
         span.acronym{
-              font-size:@big-cicle-size*0.15 !important;
+              font-size:@larger-cicle-size*0.15 !important;
         }
     }
     // medium size
@@ -74,6 +76,12 @@
         font-size: @x-small-cicle-size;
         span.acronym{
               font-size:@x-small-cicle-size*0.15 !important;
+        }
+    }
+      &.xx-small{
+        font-size: @xx-small-cicle-size;
+        span.acronym{
+              font-size:@xx-small-cicle-size*0.15 !important;
         }
     }
     // centered value inside circle
